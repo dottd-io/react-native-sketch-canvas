@@ -256,9 +256,14 @@ class SketchCanvas extends React.Component {
   }
 }
 
-SketchCanvas.MAIN_BUNDLE = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.MainBundlePath : '';
-SketchCanvas.DOCUMENT = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSDocumentDirectory : '';
-SketchCanvas.LIBRARY = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSLibraryDirectory : '';
-SketchCanvas.CACHES = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSCachesDirectory : '';
+// SketchCanvas.MAIN_BUNDLE = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.MainBundlePath : '';
+// SketchCanvas.DOCUMENT = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSDocumentDirectory : '';
+// SketchCanvas.LIBRARY = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSLibraryDirectory : '';
+// SketchCanvas.CACHES = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSCachesDirectory : '';
+
+SketchCanvas.MAIN_BUNDLE = Platform.OS === 'ios' ? UIManager['getConstants'].MainBundlePath : '';
+SketchCanvas.DOCUMENT = Platform.OS === 'ios' ? UIManager['getConstants'].NSDocumentDirectory : '';
+SketchCanvas.LIBRARY = Platform.OS === 'ios' ? UIManager['getConstants'].NSLibraryDirectory : '';
+SketchCanvas.CACHES = Platform.OS === 'ios' ? UIManager['getConstants'].NSCachesDirectory : '';
 
 module.exports = SketchCanvas;
