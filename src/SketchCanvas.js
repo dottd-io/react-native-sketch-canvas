@@ -92,7 +92,7 @@ class SketchCanvas extends React.Component {
     this.state.text = this._processText(props.text ? props.text.map(t => Object.assign({}, t)) : null)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       text: this._processText(nextProps.text ? nextProps.text.map(t => Object.assign({}, t)) : null)
     })
@@ -152,7 +152,7 @@ class SketchCanvas extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -168,7 +168,7 @@ class SketchCanvas extends React.Component {
           id: parseInt(Math.random() * 100000000), color: this.props.strokeColor,
           width: this.props.strokeWidth, data: []
         }
-        
+
         UIManager.dispatchViewManagerCommand(
           this._handle,
           UIManager.RNSketchCanvas.Commands.newPath,
@@ -255,11 +255,6 @@ class SketchCanvas extends React.Component {
     );
   }
 }
-
-// SketchCanvas.MAIN_BUNDLE = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.MainBundlePath : '';
-// SketchCanvas.DOCUMENT = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSDocumentDirectory : '';
-// SketchCanvas.LIBRARY = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSLibraryDirectory : '';
-// SketchCanvas.CACHES = Platform.OS === 'ios' ? UIManager.RNSketchCanvas.Constants.NSCachesDirectory : '';
 
 SketchCanvas.MAIN_BUNDLE = Platform.OS === 'ios' ? UIManager['getConstants'].MainBundlePath : '';
 SketchCanvas.DOCUMENT = Platform.OS === 'ios' ? UIManager['getConstants'].NSDocumentDirectory : '';
